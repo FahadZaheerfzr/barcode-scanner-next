@@ -56,7 +56,7 @@ export default function Index() {
       <Head>
         <title>Barcode Scanner</title>
       </Head>
-      <div className="container">
+      <div className="my-container">
         {
           (!found && !scannedButNotinExcel) ? (
             <DynamicBarcodeScanner setData={setData} />
@@ -86,7 +86,7 @@ export default function Index() {
               {
                 found ?
                   (
-                    <button onClick={scanAgain}>Scan Again</button>
+                    <button className="bg-indigo-600 text-white py-2 px-3 hover:bg-indigo-500" onClick={scanAgain}>Scan Again</button>
                   ) : null
               }
             </>
