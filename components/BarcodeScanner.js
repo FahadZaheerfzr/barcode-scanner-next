@@ -30,7 +30,7 @@ export default function BarcodeScanner() {
                 console.log(element["CONSIGNMENT NUMBER"])
                 if (data.includes(element["CONSIGNMENT NUMBER"])) {
                     setFound(true);
-                    setFoundNumber(element["STOP NUMBER"]);
+                    setFoundNumber(element);
                     FoundInExcel = true;
                 }
             }
@@ -81,7 +81,7 @@ export default function BarcodeScanner() {
                 found && (
                     <>
                         <p>{found ? "Here's the data you wanted" : null}</p>
-                        <p>{found ? `PREFIX: ${foundNumber["PREFIX"]}` : null}</p>
+                        {/* <p>{found ? `PREFIX: ${foundNumber["PREFIX"]}` : null}</p> */}
                         <p>{found ? `CONSIGNMENT NUMBER: ${foundNumber["CONSIGNMENT NUMBER"]}` : null}</p>
                         <p style={{ fontSize: "65px" }}>{found ? `STOP NUMBER: ${foundNumber["STOP NUMBER"]}` : null}</p>
                         {
