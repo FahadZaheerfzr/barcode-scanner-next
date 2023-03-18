@@ -9,13 +9,6 @@ export default function Dashboard() {
     const { authenticated } = router.query;
     const [authenticatedState, setAuthenticatedState] = useState(false)
 
-    const [routeNumber, setRouteNumber] = useState(undefined)
-    const [excelFile, setExcelFile] = useState(undefined)
-
-    const handleFileChange = (event) => {
-        setExcelFile(event.target.files[0]);
-    };
-
     useEffect(() => {
         if (authenticated !== 'umzCX1J6XeNXkqX134pOiQhlGHU5N5d0ohY9ECklpXCum5I9g4eEYk1DId8BJraX') {
             router.push('/admin')
@@ -24,25 +17,6 @@ export default function Dashboard() {
         }
     }, [authenticated])
 
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const formdata = new FormData();
-        console.log(routeNumber)
-        console.log(excelFile)
-        formdata.append("routeNumber", routeNumber);
-        formdata.append("excelFile", excelFile);
-
-        try {
-            await axios.post('/api/handle_driver', formdata, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            })
-        } catch (e) {
-            console.log(e)
-        }
-    }
 
 
     if (!authenticatedState) {

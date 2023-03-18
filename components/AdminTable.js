@@ -3,9 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 function AdminTable() {
     const [data, setData] = useState([
-        { id: 1, fileName: 'File1.xlsx', routeNumber: 123 },
-        { id: 2, fileName: 'File2.xlsx', routeNumber: 456 },
-        { id: 3, fileName: 'File3.xlsx', routeNumber: 789 },
+    
     ]);
     const [selectedRows, setSelectedRows] = useState([]);
 
