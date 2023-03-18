@@ -26,6 +26,8 @@ export default function BarcodeScanner() {
             let FoundInExcel = false;
             for (let i = 0; i < excelData.length; i++) {
                 const element = excelData[i];
+                console.log(data)
+                console.log(element["CONSIGNMENT NUMBER"])
                 if (data.includes(element["CONSIGNMENT NUMBER"])) {
                     setFound(true);
                     setFoundNumber(element["STOP NUMBER"]);
