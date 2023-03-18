@@ -4,7 +4,7 @@ const readXlsxFile = require('read-excel-file/node')
 
 export default async function handler(req, res) {
     let data = []
-    const rows = await readXlsxFile("./public/excels/DATA.xlsx");
+    const rows = await readXlsxFile("./public/excels/235/DATA.xlsx");
 
     for (let i = 1; i < rows.length; i++) {
         data.push({
