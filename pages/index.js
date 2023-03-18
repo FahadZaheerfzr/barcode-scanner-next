@@ -24,7 +24,7 @@ export default function Index() {
   }
 
   React.useEffect(() => {
-    
+
     getExcelData()
   }, []);
 
@@ -57,15 +57,17 @@ export default function Index() {
         <title>Barcode Scanner</title>
       </Head>
       <div className="my-container">
-        {
-          (!found && !scannedButNotinExcel) ? (
-            <DynamicBarcodeScanner setData={setData} />
+        <div className="">
+          {
+            (!found && !scannedButNotinExcel) ? (
+              <DynamicBarcodeScanner setData={setData} />
             ) : null
-        }
+          }
+        </div>
 
-        <h1 style={{ fontSize: "70px", marginTop: "50px", marginBottom: "30px" }}>{(!found && !scannedButNotinExcel) ? "Scanning..." : "Scanned !!!"}</h1>
-        <p>{(!found && !scannedButNotinExcel) ? "This might take a few seconds!" : null}</p>
-        <p>{(!found && !scannedButNotinExcel) ? "Note: Move the Camera a bit closer and focus on the barcode. Keep it still!" : null}</p>
+        <h1 className="text-4xl lg:text-6xl mt-[50px] mb-[30px]">{(!found && !scannedButNotinExcel) ? "Scanning..." : "Scanned !!!"}</h1>
+        <p className="text-2xl lg:text-4xl">{(!found && !scannedButNotinExcel) ? "This might take a few seconds!" : null}</p>
+        <p className="text-2xl lg:text-4xl">{(!found && !scannedButNotinExcel) ? "Note: Move the Camera a bit closer and focus on the barcode. Keep it still!" : null}</p>
 
         {
           scannedButNotinExcel && (
@@ -86,7 +88,7 @@ export default function Index() {
               {
                 found ?
                   (
-                    <button className="bg-indigo-600 text-white py-2 px-3 hover:bg-indigo-500" onClick={scanAgain}>Scan Again</button>
+                    <button className="bg-indigo-600 text-white py-2 px-3" onClick={scanAgain}>Scan Again</button>
                   ) : null
               }
             </>
