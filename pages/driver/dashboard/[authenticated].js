@@ -27,20 +27,22 @@ export default function Dashboard() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formdata = new FormData();
-        console.log(routeNumber)
-        console.log(excelFile)
         formdata.append("routeNumber", routeNumber);
         formdata.append("excelFile", excelFile);
 
         try {
-            await axios.post('/api/handle_driver', formdata, {
+            const res = axios.post('/api/handle_driver', formdata, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             })
+
+            alert("File uploaded successfully")
         } catch (e) {
             console.log(e)
         }
+
+
     }
 
 
@@ -58,6 +60,12 @@ export default function Dashboard() {
             </Head>
 
             <div className='w-screen h-screen px-10 bg-gray-100 text-gray-800'>
+                <div className='flex w-full justify-end'>
+                    <button className='mt-10 lg:absolute text-lg bg-gray-700 px-3 py-2 text-white rounded-lg'>
+                        Logout
+                    </button>
+                </div>
+                
                 <div className='flex flex-col'>
                     <span className='text-5xl font-semibold mt-10'>
                         Welcome to the Driver&apos;s portal
@@ -73,7 +81,7 @@ export default function Dashboard() {
                             Route Number *
                         </label>
 
-                        <input className="w-1/2 h-12 px-4 mb-2 text-lg text-gray-700 placeholder-gray-600 border border-gray-700 rounded-lg focus:shadow-outline bg-transparent" type="text" placeholder="Route Number"
+                        <input className="lg:w-1/2 h-12 px-4 mb-2 text-lg text-gray-700 placeholder-gray-600 border border-gray-700 rounded-lg focus:shadow-outline bg-transparent" type="text" placeholder="Route Number"
                             onChange={(e) => setRouteNumber(e.target.value)} />
                     </div>
 
@@ -82,7 +90,7 @@ export default function Dashboard() {
                             Excel File *
                         </label>
                         <div className="flex">
-                            <div className="w-1/2">
+                            <div className="w-full lg:w-1/2 ">
                                 <input
                                     className="relative h-12  m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 dark:border-neutral-600 bg-clip-padding py-[0.32rem] px-3 text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 dark:file:bg-neutral-700 file:px-3 file:py-[0.7rem] file:text-neutral-700 dark:file:text-neutral-100 file:transition file:duration-150 file:ease-in-out file:[margin-inline-end:0.75rem] file:[border-inline-end-width:1px] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-[0_0_0_1px] focus:shadow-primary focus:outline-none"
                                     type="file"
@@ -92,7 +100,7 @@ export default function Dashboard() {
                         </div>
                     </div>
 
-                    <div className='flex flex-col gap-y-2 mt-5 w-1/2'>
+                    <div className='flex flex-col gap-y-2 mt-5 lg:w-1/2'>
                         <button className='bg-gray-700 text-white px-4 py-2 rounded-lg'
                             type='submit' >
                             Upload

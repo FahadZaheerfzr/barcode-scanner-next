@@ -1,5 +1,6 @@
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
 import React from "react";
+import axios from "axios";
 
 
 export default function BarcodeScanner() {
@@ -10,16 +11,25 @@ export default function BarcodeScanner() {
     const [scannedButNotinExcel, setScannedButNotinExcel] = React.useState(false);
 
 
-    const getExcelData = async () => {
-        const res = await fetch("/api/read_excel");
-        const json = await res.json();
-        console.log(json);
-        setExcelData(json)
-    }
+    const [routeNumber, setRouteNumber] = React.useState(null);
+    const [startScanning, setStartScanning] = React.useState(false);
 
-    React.useEffect(() => {
-        getExcelData()
-    }, []);
+
+    const getExcelData = async () => {
+        try {
+            const res = await axios.post("/api/read_excel", {
+                routeNumber: routeNumber
+            });
+            const json = await res.data;
+            console.log(json);
+            setExcelData(json)
+            setStartScanning(true);
+        } catch (e) {
+            alert("No file for such route number");
+            console.log(e)
+        }
+
+    }
 
     React.useEffect(() => {
         if (excelData !== undefined && data !== undefined && data !== "Not Found") {
@@ -40,59 +50,86 @@ export default function BarcodeScanner() {
         }
     }, [data])
 
-    const scanAgain = () => {
-        setFound(false);
-        setScannedButNotinExcel(false)
-    }
+    
     // console.log(foundNumber);
+
+    const OnStartScanning = (e) => {
+        e.preventDefault();
+        try {
+            getExcelData()
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+
+    // Will run after every 10 seconds scan is successful
+    React.useEffect(() => {
+        setTimeout(() => {
+            // TODO:
+            // Refresh all the useStates here
+            // or call
+            // scanAgain()
+        }, 10000);
+    }, [found, scannedButNotinExcel]);
 
 
     return (
-        <div className="my-container">
-            <div className="">
-                {
-                    (!found && !scannedButNotinExcel) ? (
-                        <BarcodeScannerComponent
-                            width={600}
-                            height={500}
-                            onUpdate={(err, result) => {
-                                if (result) setData(result.text);
-                                else setData("Not Found");
-                            }}
-                        />
-                    ) : null
-                }
-            </div>
-
-            <h1 className="text-4xl lg:text-6xl mt-[50px] mb-[30px]">{(!found && !scannedButNotinExcel) ? "Scanning..." : "Scanned !!!"}</h1>
-            <p className="text-2xl lg:text-4xl">{(!found && !scannedButNotinExcel) ? "This might take a few seconds!" : null}</p>
-            <p className="text-2xl lg:text-4xl">{(!found && !scannedButNotinExcel) ? "Note: Move the Camera a bit closer and focus on the barcode. Keep it still!" : null}</p>
-
+        <React.Fragment>
             {
-                scannedButNotinExcel && (
-                    <>
-                        <h1>But Could not find in the database.</h1>
-                        <button onClick={scanAgain}>Scan Again</button>
-                    </>
-                )
-            }
+                !startScanning ? (
+                    <div className="my-container flex flex-col justify-center items-center">
 
-            {
-                found && (
-                    <>
-                        <p>{found ? "Here's the data you wanted" : null}</p>
-                        {/* <p>{found ? `PREFIX: ${foundNumber["PREFIX"]}` : null}</p> */}
-                        <p>{found ? `CONSIGNMENT NUMBER: ${foundNumber["CONSIGNMENT NUMBER"]}` : null}</p>
-                        <p style={{ fontSize: "65px" }}>{found ? `STOP NUMBER: ${foundNumber["STOP NUMBER"]}` : null}</p>
-                        {
-                            found ?
-                                (
-                                    <button className="bg-indigo-600 text-white py-2 px-3" onClick={scanAgain}>Scan Again</button>
+                        <form onSubmit={OnStartScanning} className="flex flex-col justify-center items-center">
+                            <div>
+                                <label htmlFor="route_number" className="uppercase text-center block mb-2 text-sm font-medium text-gray-900 md:text-2xl lg:text-4xl mt-[20px] lg:mb-[20px]">Enter Route Number</label>
+                                <input onChange={(e) => { setRouteNumber(e.target.value) }} type="text" id="route_number" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Route Number" required />
+                            </div>
+                            <button type="submit" className="uppercase bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mt-[30px]">
+                                Start
+                            </button>
+                        </form>
+                    </div>
+
+                ) :
+                    <div className="my-container flex flex-col justify-center items-center">
+
+
+                        <div className="">
+                            {
+                                (!found && !scannedButNotinExcel) ? (
+                                    <BarcodeScannerComponent
+                                        width={600}
+                                        height={500}
+                                        onUpdate={(err, result) => {
+                                            if (result) setData(result.text);
+                                            else setData("Not Found");
+                                        }}
+                                    />
                                 ) : null
+                            }
+                        </div>
+
+                        {/* <h1 className="text-4xl lg:text-6xl mt-[50px] mb-[30px]">{(!found && !scannedButNotinExcel) ? "Scanning..." : "Scanned !!!"}</h1>
+            <p className="text-2xl lg:text-4xl">{(!found && !scannedButNotinExcel) ? "This might take a few seconds!" : null}</p>
+            <p className="text-2xl lg:text-4xl">{(!found && !scannedButNotinExcel) ? "Note: Move the Camera a bit closer and focus on the barcode. Keep it still!" : null}</p> */}
+
+                        {
+                            scannedButNotinExcel && (
+                                <>
+                                    <h1 className="uppercase text-lg lg:text-4xl">But Could not find in the database.</h1>
+                                    {/* <button onClick={scanAgain}>Scan Again</button> */}
+                                </>
+                            )
                         }
-                    </>
-                )
+
+
+                        <p className="uppercase text-lg lg:text-4xl">Please place the barcode in camera view</p>
+                        <p className="uppercase text-base lg:text-4xl">Please keep the camera still and focus on the barcode</p>
+                        <p className="uppercase text-base lg:text-4xl font-bold">Drop Number:</p>
+                        <p className="uppercase text-3xl lg:text-4xl font-bold">XX</p>
+                    </div>
             }
-        </div>
+        </React.Fragment>
     )
 }

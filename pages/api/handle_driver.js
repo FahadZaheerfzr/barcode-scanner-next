@@ -26,7 +26,7 @@ export default async function handler(req, res) {
                 fs.mkdirSync(`./public/excels/${route}`, { recursive: true })
 
                 const oldPath = files.excelFile.filepath;
-                const newPath = `./public/excels/${route}/${file.originalFilename}`
+                const newPath = `./public/excels/${route}/data_${route}.xlsx`
                 mv(oldPath, newPath, function (err) {
                     if (err) {
                         console.log(err)

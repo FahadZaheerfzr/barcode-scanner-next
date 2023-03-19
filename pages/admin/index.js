@@ -72,7 +72,7 @@ export default function Index() {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
-                                    className="relative bg-transparent px-2 block w-full rounded-t-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:outline-none sm:text-sm sm:leading-6"
+                                    className="relative bg-white px-2 block w-full rounded-t-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:outline-none sm:text-sm sm:leading-6"
                                     placeholder="Email address"
                                 />
                             </div>
@@ -88,7 +88,7 @@ export default function Index() {
                                     onChange={(e) => setPassword(e.target.value)}
                                     autoComplete="current-password"
                                     required
-                                    className="relative bg-transparent mt-5 px-2 block w-full rounded-b-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:outline-none sm:text-sm sm:leading-6"
+                                    className="relative bg-white mt-5 px-2 block w-full rounded-b-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:outline-none sm:text-sm sm:leading-6"
                                     placeholder="Password"
                                 />
                             </div>

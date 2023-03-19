@@ -2,9 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 function AdminTable() {
-    const [data, setData] = useState([
-    
-    ]);
+    const [data, setData] = useState([]);
     const [selectedRows, setSelectedRows] = useState([]);
 
     const fetchData = async () => {
@@ -39,17 +37,24 @@ function AdminTable() {
 
     const handleBulkDelete = async () => {
         console.log(selectedRows)
+        let routes = []
+        let fileNames = []
         for (let i = 0; i < selectedRows.length; i++) {
             const routeNumber = data.filter(row => row.id === selectedRows[i])[0].routeNumber
             const fileName = data.filter(row => row.id === selectedRows[i])[0].fileName
+            routes.push(routeNumber)
+            fileNames.push(fileName)
 
-            axios.post('/api/delete_file', {
-                route: routeNumber,
-                fileName: fileName
-            })
         }
-        setData(data.filter(row => !selectedRows.includes(row.id)));
 
+    
+        axios.post('/api/delete_files', {
+            routes: routes,
+            fileNames: fileNames
+        })
+        
+        setData(data.filter(row => !selectedRows.includes(row.id)));
+        
         setSelectedRows([]);
     };
 
@@ -58,12 +63,13 @@ function AdminTable() {
         const routeNumber = data.filter(row => row.id === id)[0].routeNumber
         const fileName = data.filter(row => row.id === id)[0].fileName
 
-        await axios.post('/api/delete_file', {
+        axios.post('/api/delete_file', {
             route: routeNumber,
             fileName: fileName
         })
-        setData(data.filter(row => !selectedRows.includes(row.id)));
-        setSelectedRows(selectedRows.filter(rowId => rowId !== id));
+
+        console.log("We get here")
+        setSelectedRows([]);
     };
 
     return (
