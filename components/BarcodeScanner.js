@@ -103,7 +103,7 @@ export default function BarcodeScanner() {
 
                         <div className="">
                             {
-                                (!found && !scannedButNotinExcel) ? (
+                                (!scannedButNotinExcel) ? (
                                     <BarcodeScannerComponent
                                         width={600}
                                         height={500}

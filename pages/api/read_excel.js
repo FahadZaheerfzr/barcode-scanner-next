@@ -8,10 +8,10 @@ export default async function handler(req, res) {
     try {
         const rows = await readXlsxFile(`./public/excels/${route}/data_${route}.xlsx`);
 
-        for (let i = 1; i < rows.length; i++) {
+        for (let i = 0; i < rows.length; i++) {
             data.push({
                 "STOP NUMBER": rows[i][0],
-                "CONSIGNMENT NUMBER": rows[i][2],
+                "CONSIGNMENT NUMBER": rows[i][1],
             })
         }
         res.status(200).json(data)
