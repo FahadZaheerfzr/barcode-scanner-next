@@ -51,8 +51,13 @@ export default function BarcodeScanner() {
         }
     }, [data])
 
-    
+
     // console.log(foundNumber);
+
+    const scanAgain = () => {
+        setFound(false);
+        setScannedButNotinExcel(false)
+    }
 
     const OnStartScanning = (e) => {
         e.preventDefault();
@@ -70,7 +75,7 @@ export default function BarcodeScanner() {
             // TODO:
             // Refresh all the useStates here
             // or call
-            // scanAgain()
+            scanAgain()
         }, 10000);
     }, [found, scannedButNotinExcel]);
 
@@ -128,7 +133,7 @@ export default function BarcodeScanner() {
                         <p className="uppercase text-lg lg:text-4xl">Please place the barcode in camera view</p>
                         <p className="uppercase text-base lg:text-4xl">Please keep the camera still and focus on the barcode</p>
                         <p className="uppercase text-base lg:text-4xl font-bold">Drop Number:</p>
-                        <p className="uppercase text-3xl lg:text-4xl font-bold">{found? foundNumber : "XX"}</p>
+                        <p className="uppercase text-3xl lg:text-4xl font-bold">{found ? foundNumber : "XX"}</p>
                     </div>
             }
         </React.Fragment>
