@@ -45,6 +45,10 @@ export default function Dashboard() {
 
     }
 
+    const logout = () => {
+        router.push('/driver')
+    }
+
 
     if (!authenticatedState) {
 
@@ -61,7 +65,8 @@ export default function Dashboard() {
 
             <div className='w-screen h-screen px-10 bg-gray-100 text-gray-800'>
                 <div className='flex w-full justify-end'>
-                    <button className='mt-10 lg:absolute text-lg bg-gray-700 px-3 py-2 text-white rounded-lg'>
+                    <button className='mt-10 lg:absolute text-lg bg-gray-700 px-3 py-2 text-white rounded-lg' 
+                    onClick={logout}>
                         Logout
                     </button>
                 </div>

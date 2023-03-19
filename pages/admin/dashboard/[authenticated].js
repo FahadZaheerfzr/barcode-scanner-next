@@ -26,13 +26,24 @@ export default function Dashboard() {
         )
     }
 
+    const logout = () => {
+        router.push('/admin')
+    }
+
     return (
         <>
             <Head>
                 <title>Admin Portal</title>
             </Head>
 
+
             <div className='w-screen h-screen px-10 bg-gray-100 text-gray-800'>
+                <div className='flex w-full justify-end'>
+                    <button className='mt-10 lg:absolute text-lg bg-gray-700 px-3 py-2 text-white rounded-lg'
+                        onClick={logout}>
+                        Logout
+                    </button>
+                </div>
                 <div className='flex flex-col'>
                     <span className='text-5xl font-semibold mt-10'>
                         Welcome to the Admin&apos;s portal
@@ -44,7 +55,7 @@ export default function Dashboard() {
                 </div>
                 <div className='mt-8'>
 
-                   <AdminTable />
+                    <AdminTable />
 
                 </div>
             </div>
