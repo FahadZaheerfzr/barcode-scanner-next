@@ -68,7 +68,7 @@ function AdminTable() {
             fileName: fileName
         })
 
-        console.log("We get here")
+        setData(data.filter(row => row.id !== id));
         setSelectedRows([]);
     };
 
