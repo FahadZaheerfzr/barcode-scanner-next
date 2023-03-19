@@ -41,6 +41,7 @@ export default function BarcodeScanner() {
                 if (data.includes(element["CONSIGNMENT NUMBER"])) {
                     setFound(true);
                     setFoundNumber(element);
+                    console.log(element)
                     FoundInExcel = true;
                 }
             }
