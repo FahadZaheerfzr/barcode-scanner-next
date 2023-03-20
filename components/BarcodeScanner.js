@@ -105,16 +105,13 @@ export default function BarcodeScanner() {
                             {
                                 (!scannedButNotinExcel) ? (
                                     <QrReader
+                                        constraints={{ facingMode: 'environment' }}
                                         onResult={(result, error) => {
-                                            if (!!result) {
+                                            if (result) {
                                                 setData(result?.text);
                                             }
-
-                                            if (!!error) {
-                                                console.info(error);
-                                            }
                                         }}
-                                        style={{ width: '100%', height:'500px' }}
+                                        style={{ width: '100%', height: '500px' }}
                                     />
                                 ) : null
                             }
