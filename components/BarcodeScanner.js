@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { QrReader } from "react-qr-reader";
+import BarcodeScannerComponent from "react-qr-barcode-scanner";
 
 
 export default function BarcodeScanner() {
@@ -101,17 +101,16 @@ export default function BarcodeScanner() {
                     <div className="my-container flex flex-col justify-center items-center">
 
 
-                        <div className="w-full lg:w-1/3">
+                        <div className="">
                             {
                                 (!scannedButNotinExcel) ? (
-                                    <QrReader
-                                        constraints={{ facingMode: 'environment' }}
-                                        onResult={(result, error) => {
-                                            if (result) {
-                                                setData(result?.text);
-                                            }
+                                    <BarcodeScannerComponent
+                                        width={600}
+                                        height={500}
+                                        onUpdate={(err, result) => {
+                                            if (result) setData(result.text);
+                                            else setData("Not Found");
                                         }}
-                                        style={{ width: '100%', height: '500px' }}
                                     />
                                 ) : null
                             }
