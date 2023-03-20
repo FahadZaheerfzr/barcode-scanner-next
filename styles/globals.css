@@ -142,6 +142,7 @@ p {
 }
 
 video {
+  margin-top: -50px;
   width: 90vw;
-  height: 60vh;
+  height: 40vh;
 }
