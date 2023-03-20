@@ -111,24 +111,18 @@ a {
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
-h1, p {
+h1 {
   margin: 5px;
   padding: 5px;
   color: #000;
   text-align: center;
-
 }
-
 
 p {
-  font-size: 40px;
-}
-
-video {
-  width: 80vw;
-  height: 45vh;
+  margin: 3px;
+  color: #000;
+  text-align: center;
 }
