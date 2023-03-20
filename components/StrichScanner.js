@@ -7,7 +7,7 @@ import {
   StrichSDK
 } from "@pixelverse/strichjs-sdk";
 
-export default function StrichBarcodeScanner(setData) {
+export default function StrichBarcodeScanner({setData}) {
   const myRef = React.useRef(null);
   React.useEffect(() => {
     const btn = document.getElementById("scanner");
