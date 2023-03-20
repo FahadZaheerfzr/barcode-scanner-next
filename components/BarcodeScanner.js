@@ -1,6 +1,12 @@
 import React from "react";
 import axios from "axios";
-
+import {
+    BarcodeReader,
+    CodeDetection,
+    Configuration,
+    SdkError,
+    StrichSDK
+  } from "@pixelverse/strichjs-sdk";
 
 export default function BarcodeScanner() {
     const [data, setData] = React.useState("Not Found");
