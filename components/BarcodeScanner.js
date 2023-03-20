@@ -104,7 +104,7 @@ export default function BarcodeScanner() {
                     <div className="my-container flex flex-col items-center">
 
 
-                        <div className="">
+                        <div className="mt-10">
                             {
                                 <StrichBarcodeScanner setData={setData} />
                             }
