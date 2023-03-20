@@ -57,7 +57,7 @@ export default function StrichBarcodeScanner(setData) {
               //     this.codeDetection = detections[0];
               //   });
               console.log(detections[0].data);
-
+              
               setData(detections[0].data);
             };
 
