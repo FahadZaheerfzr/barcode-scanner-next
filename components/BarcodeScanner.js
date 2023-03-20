@@ -79,7 +79,7 @@ export default function BarcodeScanner() {
             // Refresh all the useStates here
             // or call
             scanAgain()
-        }, 10000);
+        }, 5000);
     }, [found, scannedButNotinExcel]);
 
 
