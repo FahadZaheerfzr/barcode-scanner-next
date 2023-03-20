@@ -73,7 +73,7 @@ export default function StrichBarcodeScanner({setData}) {
       .catch((err) => {
         console.log(err);
       });
-  }, [myRef?.current]);
+  }, []);
 
   return (
     <React.Fragment>
