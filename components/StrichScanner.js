@@ -88,7 +88,7 @@ export default function StrichBarcodeScanner({setData}) {
       ref={myRef}
         className="scanner"
         id="scanner"
-        style={{ position: "relative", height: "80vh", width: "100vw" }}
+        style={{ position: "relative", height: "65vh", width: "100vw" }}
       ></div>
     </React.Fragment>
   );
