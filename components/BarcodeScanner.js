@@ -14,7 +14,7 @@ export default function BarcodeScanner() {
 
     const [routeNumber, setRouteNumber] = React.useState(null);
     const [startScanning, setStartScanning] = React.useState(false);
-    
+
 
 
     const getExcelData = async () => {
@@ -106,17 +106,9 @@ export default function BarcodeScanner() {
 
                         <div className="">
                             {
-                                (!scannedButNotinExcel) ? (
-                                    /* <BarcodeScannerComponent
-                                        width={600}
-                                        height={500}
-                                        onUpdate={(err, result) => {
-                                            if (result) setData(result.text);
-                                            else setData("Not Found");
-                                        }}
-                                    /> */
-                                    <StrichBarcodeScanner setData={setData} />
-                                ) : null
+
+                                <StrichBarcodeScanner setData={setData} />
+
                             }
                         </div>
 
@@ -125,19 +117,21 @@ export default function BarcodeScanner() {
             <p className="text-2xl lg:text-4xl">{(!found && !scannedButNotinExcel) ? "Note: Move the Camera a bit closer and focus on the barcode. Keep it still!" : null}</p> */}
 
                         {
-                            scannedButNotinExcel && (
+                            scannedButNotinExcel ? (
                                 <>
                                     <h1 className="uppercase text-lg lg:text-4xl">But Could not find in the database.</h1>
                                     {/* <button onClick={scanAgain}>Scan Again</button> */}
                                 </>
-                            )
+                            ) :
+
+
+                                <>
+                                    <p className="uppercase text-lg lg:text-4xl">Please place the barcode in camera view</p>
+                                    <p className="uppercase text-base lg:text-4xl">Please keep the camera still and focus on the barcode</p>
+                                    <p className="uppercase text-base lg:text-4xl font-bold">Drop Number:</p>
+                                    <p className="uppercase text-3xl lg:text-4xl font-bold">{found ? foundNumber["STOP NUMBER"] : "XX"}</p>
+                                </>
                         }
-
-
-                        <p className="uppercase text-lg lg:text-4xl">Please place the barcode in camera view</p>
-                        <p className="uppercase text-base lg:text-4xl">Please keep the camera still and focus on the barcode</p>
-                        <p className="uppercase text-base lg:text-4xl font-bold">Drop Number:</p>
-                        <p className="uppercase text-3xl lg:text-4xl font-bold">{found ? foundNumber["STOP NUMBER"] : "XX"}</p>
                     </div>
             }
         </React.Fragment>
