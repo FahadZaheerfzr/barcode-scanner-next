@@ -59,6 +59,13 @@ export default function StrichBarcodeScanner({setData}) {
               console.log(detections[0].data);
               
               setData(detections[0].data);
+              barcodeReader.stop().then((r) => {
+                setInterval(() => {
+                    barcodeReader.start().then((r) => {
+                        console.log(r);
+                    });
+                    }, 3000);
+              });
             };
 
             // start reading codes
