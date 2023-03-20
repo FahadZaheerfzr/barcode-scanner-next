@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
+import StrichBarcodeScanner from "./StrichScanner";
 
 
 export default function BarcodeScanner() {
@@ -104,14 +105,15 @@ export default function BarcodeScanner() {
                         <div className="">
                             {
                                 (!scannedButNotinExcel) ? (
-                                    <BarcodeScannerComponent
+                                    /* <BarcodeScannerComponent
                                         width={600}
                                         height={500}
                                         onUpdate={(err, result) => {
                                             if (result) setData(result.text);
                                             else setData("Not Found");
                                         }}
-                                    />
+                                    /> */
+                                    <StrichBarcodeScanner setData={setData} />
                                 ) : null
                             }
                         </div>
