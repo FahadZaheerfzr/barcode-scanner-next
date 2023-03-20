@@ -106,7 +106,7 @@ export default function BarcodeScanner() {
                                 (!scannedButNotinExcel) ? (
                                     <BarcodeScannerComponent
                                         width={300}
-                                        height={400}
+                                        height={200}
                                         onUpdate={(err, result) => {
                                             if (result) setData(result.text);
                                             else setData("Not Found");
