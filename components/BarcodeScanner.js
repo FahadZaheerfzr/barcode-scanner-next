@@ -101,14 +101,12 @@ export default function BarcodeScanner() {
                     </div>
 
                 ) :
-                    <div className="my-container flex flex-col justify-center items-center">
+                    <div className="my-container flex flex-col items-center">
 
 
                         <div className="">
                             {
-
                                 <StrichBarcodeScanner setData={setData} />
-
                             }
                         </div>
 
@@ -119,15 +117,15 @@ export default function BarcodeScanner() {
                         {
                             scannedButNotinExcel ? (
                                 <>
-                                    <h1 className="uppercase text-lg lg:text-4xl">But Could not find in the database.</h1>
+                                    <h1 className="uppercase lg:text-4xl">But Could not find in the database.</h1>
                                     {/* <button onClick={scanAgain}>Scan Again</button> */}
                                 </>
                             ) :
 
 
                                 <>
-                                    <p className="uppercase text-lg lg:text-4xl">Please place the barcode in camera view</p>
-                                    <p className="uppercase text-base lg:text-4xl">Please keep the camera still and focus on the barcode</p>
+                                    <p className="uppercase text-base lg:text-4xl">Please place the barcode in camera view</p>
+                                    <p className="uppercase text-sm lg:text-4xl">Please keep the camera still and focus on the barcode</p>
                                     <p className="uppercase text-base lg:text-4xl font-bold">Drop Number:</p>
                                     <p className="uppercase text-3xl lg:text-4xl font-bold">{found ? foundNumber["STOP NUMBER"] : "XX"}</p>
                                 </>
