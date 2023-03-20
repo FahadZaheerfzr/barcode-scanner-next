@@ -13,7 +13,7 @@ export default function StrichBarcodeScanner(setData) {
     const btn = document.getElementById("scanner");
     // setTest(btn);
     StrichSDK.initialize(
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwZjQ4MmNhZC04YTQxLTQ1Y2ItOGU5Yi0yOTJjZDlmNmRlYzAiLCJpc3MiOiJzdHJpY2guaW8iLCJhdWQiOlsiaHR0cDovL3Bmb3JjZS5vbnkteC5jby51ay8iXSwiaWF0IjoxNjc5MzI4MzE5LCJuYmYiOjE2NzkzMjgzMTksImNhcGFiaWxpdGllcyI6eyJvZmZsaW5lIjpmYWxzZSwiYW5hbHl0aWNzT3B0T3V0IjpmYWxzZX0sInZlcnNpb24iOjF9.1kIGBPhwDe9UJ_dbW592gYMWqJZEpWDm93_RwUZ_boI"
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ZTE2NjhkNi00MjRlLTQ2MWEtODkyNS0wYjAzY2NjNDA1MzUiLCJpc3MiOiJzdHJpY2guaW8iLCJhdWQiOlsiaHR0cHM6Ly9wZm9yY2Uub255LXguY28udWsvIl0sImlhdCI6MTY3OTM0MDYzMCwibmJmIjoxNjc5MzQwNjMwLCJjYXBhYmlsaXRpZXMiOnsib2ZmbGluZSI6ZmFsc2UsImFuYWx5dGljc09wdE91dCI6ZmFsc2V9LCJ2ZXJzaW9uIjoxfQ.SJa-SVmwV_U-Vq91lG5y6GbiBFVnsrIYkcaEBE_9sfw"
     )
       .then(() => {
         console.log(`SDK initialized`);
