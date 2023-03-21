@@ -41,7 +41,7 @@ export default function StrichBarcodeScanner({setData}) {
             vibration: true
           },
           locator: {
-            regionOfInterest: { left: 0.1, right: 0.1, top: 0.1, bottom: 0.1 }
+            regionOfInterest: { left: 0.1, right: 0.1, top: 0.4, bottom: 0.4 }
           }
         };
         console.log("here1");
