@@ -26,7 +26,7 @@ export default function StrichBarcodeScanner({setData}) {
             numScanlines: 10,
             minScanlinesNeeded: 3,
             invertedCodes: true,
-            duplicateInterval: 750
+            duplicateInterval: 350
           },
           frameSource: {
             resolution: "full-hd" // full-hd is recommended for more challenging codes
@@ -39,6 +39,9 @@ export default function StrichBarcodeScanner({setData}) {
           feedback: {
             audio: true,
             vibration: true
+          },
+          locator: {
+            regionOfInterest: { left: 0.1, right: 0.1, top: 0.25, bottom: 0.25 }
           }
         };
         console.log("here1");
