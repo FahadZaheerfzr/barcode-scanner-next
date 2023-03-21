@@ -125,7 +125,7 @@ export default function BarcodeScanner() {
 
                                 <div className="mt-5">
                                     <p className="uppercase text-base lg:text-4xl font-bold">Drop Number:</p>
-                                    <p className="uppercase text-3xl lg:text-4xl font-bold">{data!=="Not Found" ? foundNumber["STOP NUMBER"] : "XX"}</p>
+                                    <p className="uppercase text-3xl lg:text-4xl font-bold">{foundNumber ? foundNumber["STOP NUMBER"] : "XX"}</p>
                                 </div>
                         }
                     </div>
